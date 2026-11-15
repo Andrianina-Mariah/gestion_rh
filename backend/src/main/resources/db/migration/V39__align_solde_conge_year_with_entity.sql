@@ -1,0 +1,3 @@
+ALTER TABLE solde_conge
+    ALTER COLUMN annee TYPE INTEGER
+    USING annee::INTEGER;

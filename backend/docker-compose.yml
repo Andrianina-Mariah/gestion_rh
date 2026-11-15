@@ -1,0 +1,20 @@
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: sirh_postgres
+    environment:
+      POSTGRES_USER: sirh_user
+      POSTGRES_PASSWORD: sirh
+      POSTGRES_DB: sirh
+    ports:
+      - "5433:5432"
+    volumes:
+      - sirh_data:/var/lib/postgresql/data
+      - ../database/bloc-01.sql:/docker-entrypoint-initdb.d/bloc-01.sql:ro
+      - ../database/bloc-02.sql:/docker-entrypoint-initdb.d/bloc-02.sql:ro
+      - ../database/bloc-03.sql:/docker-entrypoint-initdb.d/bloc-03.sql:ro
+    restart: unless-stopped
+
+volumes:
+  sirh_data:
